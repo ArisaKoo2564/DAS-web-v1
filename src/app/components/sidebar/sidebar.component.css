@@ -1,0 +1,28 @@
+.sidebar {
+    background-color: rgb(179, 173, 169);
+    height: 91vh;
+    padding: 10px;
+}
+
+.menu-item {
+    text-decoration: none;
+    color: black;
+}
+
+.menu-item:hover {
+    color: blue;
+}
+
+.layout {
+    display: flex;
+}
+
+.layout-name {
+    flex: 7;
+}
+
+.layout-count {
+    flex: 1;
+    color: blue;
+    text-decoration: none;
+}

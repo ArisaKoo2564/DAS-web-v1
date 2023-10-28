@@ -1,0 +1,16 @@
+.full-height-element {
+    height: 100vh;
+}
+
+.app-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.menu-content {
+    flex: 1;
+}
+
+.main-content {
+    flex: 7;
+}
