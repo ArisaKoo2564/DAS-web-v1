@@ -1,22 +1,12 @@
 <div class="sidebar">
-  <div class="layout">
-    <a class="menu-item layout-name" routerLink="/create-work"> Create Work </a>
-    <a class="layout-count">{{ 0 }}</a>
-  </div>
-  <div class="layout">
-    <a class="menu-item layout-name" routerLink="/work-list">List</a>
-    <a class="layout-count">{{ 0 }}</a>
-  </div>
-  <div class="layout">
-    <a class="menu-item layout-name" routerLink="/approve">Approve</a>
-    <a class="layout-count">{{ 0 }}</a>
-  </div>
-  <div class="layout">
-    <a class="menu-item layout-name" routerLink="/reject">Reject</a>
-    <a class="layout-count">{{ 0 }}</a>
-  </div>
-  <div class="layout">
-    <a class="menu-item layout-name" routerLink="/log-out">log out</a>
-    <a class="layout-count">{{ 0 }}</a>
+  <div class="layout" *ngFor="let item of value">
+    <!-- <a class="menu-item layout-name" routerLink="{{ item.path }}">
+      {{ item.name }}
+    </a> -->
+
+    <a class="menu-item layout-name" (click)="goTo(item.path)">
+      {{ item.name }}
+    </a>
+    <a class="layout-count">{{ item.count }}</a>
   </div>
 </div>

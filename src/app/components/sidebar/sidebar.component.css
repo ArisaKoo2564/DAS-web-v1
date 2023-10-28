@@ -1,5 +1,5 @@
 .sidebar {
-    background-color: rgb(179, 173, 169);
+    background-color: rgb(243, 243, 243);
     height: 91vh;
     padding: 10px;
 }
@@ -11,6 +11,7 @@
 
 .menu-item:hover {
     color: blue;
+    cursor: pointer;
 }
 
 .layout {
@@ -25,4 +26,5 @@
     flex: 1;
     color: blue;
     text-decoration: none;
+    cursor: pointer;
 }
