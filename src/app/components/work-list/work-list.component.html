@@ -1,44 +1,229 @@
-<div class="comtainer">
+<div class="container mt-4">
   <div class="row mt-2">
-    <div class="col-10">
-      <h3>List</h3>
+    <div class="col-8">
+      <button class="btn btn-primary" (click)="openModal()">+ Add</button>
     </div>
-    <div class="col-2" style="text-align: end">
-      <button class="btn btn-success" (click)="goToCreate()">Create Work</button>
+    <div class="col-2">
+      <select class="form-select" id="selectField">
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+      </select>
+    </div>
+    <div class="col-2">
+      <!-- <button class="btn btn-success" (click)="goToCreate()">
+        Create Work
+      </button> -->
+      <!-- <input type="text" class="form-control" /> -->
+      <div class="input-group mb-2">
+        <input
+          type="text"
+          class="form-control"
+          id="inlineFormInputGroup"
+          placeholder="search"
+        />
+      </div>
     </div>
   </div>
+
   <div class="row">
     <div class="col-12">
-      <table class="table table-striped">
-        <thead>
+      <p-table
+        #dt
+        [value]="data"
+        dataKey="id"
+        styleClass="p-datatable-sm"
+        [rowHover]="true"
+        [rows]="5"
+        [loading]="loading"
+        [paginator]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [filterDelay]="0"
+        [globalFilterFields]="['name']"
+      >
+        <ng-template pTemplate="header">
           <tr>
-            <th scope="col">No.</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th pSortableColumn="name">
+              หมายเลขงาน <p-sortIcon field="name"></p-sortIcon>
+            </th>
+            <th pSortableColumn="name">
+              วันที่ <p-sortIcon field="name"></p-sortIcon>
+            </th>
+            <th pSortableColumn="name">
+              รายละเอียด <p-sortIcon field="name"></p-sortIcon>
+            </th>
+            <th pSortableColumn="name">
+              สถานะดำเนินการ <p-sortIcon field="name"></p-sortIcon>
+            </th>
+            <th pSortableColumn="name">
+              ผู้ทำรายการ <p-sortIcon field="name"></p-sortIcon>
+            </th>
           </tr>
-        </thead>
-        <tbody>
+        </ng-template>
+        <ng-template pTemplate="body" let-customer>
+          <tr class="p-selectable-row">
+            <td>
+              <span class="p-column-title">Name</span>
+              {{ customer.name }}
+            </td>
+            <td>
+              <span class="p-column-title">Country</span>
+              <span class="image-text">{{ customer.name }}</span>
+            </td>
+            <td>
+              <span class="p-column-title">Representative</span>
+              <span class="image-text">{{ customer.name }}</span>
+            </td>
+            <td>
+              <span class="p-column-title">Date</span>
+              {{ customer.name }}
+            </td>
+            <td>
+              <span class="p-column-title">Status</span>
+              <span [class]="'customer-badge status-' + customer.name">{{
+                customer.name
+              }}</span>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
           <tr>
-            <th>1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td colspan="8">No customers found.</td>
           </tr>
-          <tr>
-            <th>2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th>3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
-      </table>
+        </ng-template>
+      </p-table>
     </div>
   </div>
-  
+</div>
+
+<!-- Modal -->
+
+<div
+  *ngIf="isModalOpen"
+  class="modal show"
+  tabindex="-1"
+  role="dialog"
+  style="display: block; width: 100%"
+>
+  <div
+    class="modal-dialog modal-lg modal-dialog-centered"
+    role="document"
+    style="width: 100%"
+  >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">My Modal</h5>
+        <button
+          type="button"
+          class="btn-close"
+          (click)="closeModal()"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <!-- Add modal content here -->
+        <div class="container">
+          <h1>Add</h1>
+          <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3 row">
+              <label for="docId" class="col-sm-2 col-form-label">
+                รหัสเอกสาร :
+              </label>
+              <div class="col-sm-4">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="docId"
+                  formControlName="docId"
+                />
+              </div>
+
+              <label for="creator" class="col-sm-2 col-form-label">
+                รหัสเอกสาร :
+              </label>
+              <div class="col-sm-4">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="creator"
+                  formControlName="creator"
+                />
+              </div>
+            </div>
+
+            <div class="mb-3 row">
+              <label for="createDate" class="col-sm-2 col-form-label">
+                วันที่สร้างงาน :
+              </label>
+              <div class="col-sm-4">
+                <input
+                  type="date"
+                  id="createDate"
+                  class="form-control"
+                  formControlName="createDate"
+                />
+              </div>
+
+              <label for="recipient" class="col-sm-2 col-form-label">
+                ผู้รับงาน :
+              </label>
+              <div class="col-sm-4">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="recipient"
+                  formControlName="recipient"
+                />
+              </div>
+            </div>
+
+            <div class="mb-3 row">
+              <label for="content" class="col-sm-2 col-form-label">
+                วันที่สร้างงาน :
+              </label>
+              <div class="col-sm-10">
+                <textarea
+                  class="form-control"
+                  id="content"
+                  formControlName="content"
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="mb-3 row">
+              <label for="fileField" class="col-sm-2 col-form-label">
+                ไฟล์แนบ :
+              </label>
+              <div class="col-sm-10">
+                <input
+                  type="file"
+                  class="form-control"
+                  id="fileField"
+                  formControlName="fileField"
+                />
+              </div>
+            </div>
+
+            <div class="mb-3 row">
+              <label for="reason" class="col-sm-2 col-form-label">
+                หมายเหตุ :
+              </label>
+              <div class="col-sm-10">
+                <textarea
+                  class="form-control"
+                  id="reason"
+                  formControlName="reason"
+                ></textarea>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
 </div>

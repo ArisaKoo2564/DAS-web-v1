@@ -1,0 +1,42 @@
+<div class="sidebar">
+  <div
+    class="layout"
+    [ngClass]="{ 't-active': isActive == item.path }"
+    *ngFor="let item of value"
+  >
+    <b class="layout-name" (click)="goTo(item.path)">
+      <a class="menu-item">
+        {{ item.name }}
+      </a>
+    </b>
+
+    <a class="layout-count">{{ item.count }}</a>
+  </div>
+
+  <div class="menu-item  layout-logout">
+    <a href=""> logout</a>
+  </div>
+</div>
+
+<!-- Sidebar -->
+<!-- <nav
+  class="col-md-2 d-none d-md-block bg-light sidebar"
+  [ngClass]="{ 'd-none': isCollapsed }"
+>
+  <div class="sidebar-sticky">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">
+          <i class="fas fa-home"></i>
+          Home
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <i class="fas fa-user"></i>
+          Profile
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav> -->

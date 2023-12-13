@@ -1,1 +1,42 @@
-<p>create-work works!</p>
+<form
+  [formGroup]="myForm"
+  (ngSubmit)="onSubmit()"
+  enctype="multipart/form-data"
+>
+  <!-- ในฟอร์ม HTML ของคุณ, ให้เพิ่ม enctype="multipart/form-data" ในแท็ก <form> เพื่อระบุว่าฟอร์มนี้มีการส่งข้อมูลที่มีไฟล์: -->
+  <div class="mb-3">
+    <label for="inputField" class="form-label">Input Field</label>
+    <input
+      type="text"
+      class="form-control"
+      id="inputField"
+      formControlName="inputField"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="textareaField" class="form-label">Textarea Field</label>
+    <textarea
+      class="form-control"
+      id="textareaField"
+      formControlName="textareaField"
+    ></textarea>
+  </div>
+  <div class="mb-3">
+    <label for="selectField" class="form-label">Select Field</label>
+    <select class="form-select" id="selectField" formControlName="selectField">
+      <option value="option1">Option 1</option>
+      <option value="option2">Option 2</option>
+      <option value="option3">Option 3</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="fileField" class="form-label">Attach File</label>
+    <input
+      type="file"
+      class="form-control"
+      id="fileField"
+      formControlName="fileField"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

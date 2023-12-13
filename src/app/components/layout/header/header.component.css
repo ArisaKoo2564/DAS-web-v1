@@ -1,0 +1,13 @@
+.header {
+    background-color: rgb(40, 85, 180);
+    color: white;
+}
+
+.navbar-brand {
+    text-transform: uppercase;
+    color: white;
+}
+
+.log-out {
+    text-align: end;
+}

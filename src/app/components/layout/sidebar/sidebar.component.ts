@@ -8,13 +8,17 @@ import { Router } from '@angular/router';
 })
 export class SidebarComponent {
   @Input() menu: any;
-  constructor(private router: Router) {}
 
-  menuTEST = [
+  value = [
     {
       name: 'List',
       path: '/work-list',
       count: 1,
+    },
+    {
+      name: 'Inprogress',
+      path: '/inprogress',
+      count: 3,
     },
     {
       name: 'Approve',
@@ -27,16 +31,14 @@ export class SidebarComponent {
       count: 94,
     },
   ];
-  
-  ngOnInit(): void {
-    this.initData()
-  }
-  
-  initData(){
-    //get api
-  }
+
+  constructor(private router: Router) {}
+
+  isActive: string = '';
+  ngOnInit(): void {}
 
   goTo(path: string): void {
     this.router.navigate([path]);
+    this.isActive = path;
   }
 }

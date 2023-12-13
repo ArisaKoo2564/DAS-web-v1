@@ -1,0 +1,54 @@
+.sidebar {
+    background-color: rgb(58, 98, 185);
+    height: 91vh;
+    padding: 10px;
+    position: relative;
+}
+
+.layout {
+    display: flex;
+    color: rgb(255, 255, 255);
+    padding: 10px 5px;
+}
+
+.layout:hover {
+    cursor: pointer;
+    color: blue;
+    background: rgb(134, 134, 134);
+}
+
+.menu-item {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+
+}
+
+.menu-item:hover {
+    cursor: pointer;
+    color: blue;
+}
+
+.layout-name {
+    flex: 7;
+}
+
+.layout-count {
+    flex: 1;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.t-active {
+    cursor: pointer;
+    color: blue !important;
+    background: rgb(134, 134, 134);
+}
+
+.layout-logout {
+    position: sticky;
+    bottom: 100px;
+    padding: 10px;
+
+}
